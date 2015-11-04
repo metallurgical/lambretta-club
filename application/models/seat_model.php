@@ -8,6 +8,14 @@ class Seat_model extends CI_Model {
         parent::__construct();
     }   
 
+    //fetch department details from database
+    function get_article_list($limit, $start)
+    {
+        $sql = 'select * from articles order by article_id desc limit ' . $start . ', ' . $limit;
+        $query = $this->db->query($sql);
+        return $query->result();
+    }
+
 
     /**
      * [insert_new_data insert data into table - any type of table]

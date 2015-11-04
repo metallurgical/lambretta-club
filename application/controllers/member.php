@@ -11,6 +11,7 @@ class Member extends CI_Controller {
 	public function index () {
 		$this->load->view('member/dashboard');
 	}
+	
 
 	public function profile () {
 
@@ -54,6 +55,54 @@ class Member extends CI_Controller {
 		$this->load->view('member/event');
 	}
 
+	public function myEvent () {
+
+		/*$member_id = $this->session->userdata('user_id');
+		$crud = new grocery_CRUD();		
+        $state = $crud->getState();
+        $data['page_header_title'] = ucfirst($this->uri->segment(2)) . " Management";
+        $crud->set_table('event_join');
+        $crud->where( 'member_id', $member_id );
+        $crud->set_relation( 'event_id', 'events', '{text} {event_description}');
+        //$crud->set_relation( 'event_id', 'events', 'textw');
+       $crud->columns( 'event_description','text');
+        $output = $crud->render();
+        $output->data = $data;
+        $this->load->view('CRUD', $output);*/
+
+		$member_id = $this->session->userdata('user_id');
+		$table     = 'event_join';
+        $where = array(
+        		'member_id' => $member_id
+        	);
+		$tableNameToJoin = array('events');
+		$tableRelation   = array('event_join.event_id = events.event_id');
+		$data['members'] = $this->seat_model->get_all_rows($table,$where, $tableNameToJoin, $tableRelation);
+        $this->load->view('member/myEvent', $data, FALSE);
+    
+
+	}
+
+	public function deleteEvent () {
+
+		$event_join_id = $this->uri->segment(3);
+		$table         = 'event_join';
+        $where = array(
+        		'event_join_id' => $event_join_id
+        	);
+		$this->seat_model->delete_data($table, $where);
+		$messageType = 'delete';
+
+		if ( $this->session->userdata('user_category') == "member" ) {
+			$go = 'member/myEvent';
+		}
+		else {
+			$go = 'admin/joinedEvent';
+		}
+		
+		$this->seat_model->display_message( $messageType, $go);
+	}
+
 	public function viewEvent () {
 		   
 		/*$res = mysqli_connect("localhost","root",""); 
@@ -66,6 +115,8 @@ class Member extends CI_Controller {
 		$connector->event->attach($this);
 		$connector->render();
 	}
+
+
 
 	public function joinEvent () {
 
@@ -124,10 +175,59 @@ class Member extends CI_Controller {
 			return $msg;
 		}else {
 			echo $msg;
-		}
+		}		
+		
+	}
 
-		
-		
+	public function listArticles () {
+
+		/*$data['articles'] = $this->seat_model->get_all_rows( 'articles' );
+		$this->load->view('member/listArticles', $data);*/
+
+		//pagination settings
+        $config['base_url'] = site_url('member/listArticles');
+        $config['total_rows'] = $this->db->count_all('articles');
+        $config['per_page'] = "2";
+        $config["uri_segment"] = 3;
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        //config for bootstrap pagination class integration
+        $config['full_tag_open'] = '<ul class="pagination pull-right">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        //call the model function to get the department data
+        $data['articles'] = $this->seat_model->get_article_list($config["per_page"], $data['page']);           
+        //print_r($data['articles']);
+        $data['pagination'] = $this->pagination->create_links();
+
+        //load the department_view
+        $this->load->view('member/listArticles',$data);
+	}
+
+	public function viewArticles () {
+		$article_id = $this->uri->segment(3);
+		$data['article'] = $this->seat_model->get_specified_row( 'articles', array('article_id' => $article_id));
+		$this->load->view('member/viewArticles', $data);
 	}
 }
 

@@ -42,8 +42,10 @@
             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li> -->
+        <li><a href="<?php echo base_url('admin/articles');?>"><i class="fa fa-book"></i> Articles Management</a></li>
         <li><a href="<?php echo base_url('admin/member');?>"><i class="fa fa-book"></i> Member Management</a></li>
         <li><a href="<?php echo base_url('admin/event');?>"><i class="fa fa-book"></i> Events Management</a></li>
+        <li><a href="<?php echo base_url('admin/joinedEvent');?>"><i class="fa fa-book"></i> Joined Event</a></li>
         <li><a href="<?php echo base_url('login/logout');?>"><i class="fa fa-book"></i> Logout</a></li>
       <?php 
       }
@@ -58,6 +60,8 @@
           </ul>
         </li> -->
         <li><a href="<?php echo base_url('member/event');?>"><i class="fa fa-book"></i> Events</a></li>
+        <li><a href="<?php echo base_url('member/myEvent');?>"><i class="fa fa-book"></i> My Events</a></li>
+        <li><a href="<?php echo base_url('member/listArticles');?>"><i class="fa fa-book"></i> Articles</a></li>
       <?php 
       }
       else{ ?>
