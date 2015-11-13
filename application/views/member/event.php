@@ -79,6 +79,15 @@
           // otherwise
           else {
             output = '<div style="border: 1px solid #A2D246; color : #000; background : #EBF8A4; padding : 0 3px; " id="msg">Successfull Sent</div>';
+
+            setTimeout( function () {
+              scheduler.endLightbox( false );
+              $('.dhx_cal_light').css({
+                visibility: 'visible',
+                display: 'none'
+              });
+            }, 500 );
+            
           }
           // remove msg div element
           $( this ).nextAll( '#msg' ).remove().end();

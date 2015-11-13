@@ -59,9 +59,10 @@
             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li> -->
+        <li><a href="<?php echo base_url('member');?>"><i class="fa fa-home"></i> Home</a></li>
         <li><a href="<?php echo base_url('member/event');?>"><i class="fa fa-book"></i> Events</a></li>
         <li><a href="<?php echo base_url('member/myEvent');?>"><i class="fa fa-book"></i> My Events</a></li>
-        <li><a href="<?php echo base_url('member/listArticles');?>"><i class="fa fa-book"></i> Articles</a></li>
+        <!-- <li><a href="<?php echo base_url('member/listArticles');?>"><i class="fa fa-book"></i> Articles</a></li> -->
       <?php 
       }
       else{ ?>
