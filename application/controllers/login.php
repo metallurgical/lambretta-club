@@ -29,6 +29,7 @@ class Login extends CI_Controller {
 					'user_name'     => $member['member_name'],
 					'user_username' => $member['member_username'],
 					'user_email'    => $member['member_email'],
+					'user_pic'		=> $member['member_profile_picture'],
 					'user_created'  => $member['member_date_created']
 				);				
 				$this->session->set_userdata( $array );
@@ -51,7 +52,7 @@ class Login extends CI_Controller {
 							'user_category' => 'admin'
 						);				
 					$this->session->set_userdata( $array );
-					redirect('admin');
+					redirect('admin/articles');
 				}
 				else {
 
@@ -71,19 +72,34 @@ class Login extends CI_Controller {
 		if ( $this->input->post() ) {
 
 			$formData = $this->input->post();
+			$name     =$_FILES['member_pic']['name'];
+			$size     =$_FILES['member_pic']['size'];
+			$type     =$_FILES['member_pic']['type'];
+			$tmp_name =$_FILES['member_pic']['tmp_name'];
+
+			$config['upload_path'] = './assets/uploads/profile/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';	
+			$this->load->library('upload', $config);
+			$this->upload->do_upload( 'member_pic' );
 
 			$table = 'members';
 			$arrayData = array(
-					'member_username'     => $formData['member_username'],
-					'member_password'     => $formData['member_password'],
-					'member_email'        => $formData['member_email'],
-					'member_ic'           => $formData['member_ic'],
-					'member_name'         => $formData['member_name'],
-					'member_gender'       => $formData['member_gender'],
-					'member_address'      => $formData['member_address'],
-					'member_date_created' => date('Y-m-d H:i:s')
+					'member_username'          => $formData['member_username'],
+					'member_password'          => $formData['member_password'],
+					'member_email'             => $formData['member_email'],
+					'member_ic'                => $formData['member_ic'],
+					'member_name'              => $formData['member_name'],
+					'member_gender'            => $formData['member_gender'],
+					'member_address'           => $formData['member_address'],
+					'member_phone'             => $formData['member_phone'],
+					'member_type_of_lambretta' => $formData['member_type_of_lambretta'],
+					'member_plate_no'          => $formData['member_plate_no'],
+					'member_married'           => $formData['member_married'],
+					'member_profile_picture'   => $name,
+					'member_date_created'      => date('Y-m-d H:i:s')
 				);
 	
+			
 			$member_id = $this->seat_model->insert_data( $arrayData, $table );
 
 			if ( $member_id ) {

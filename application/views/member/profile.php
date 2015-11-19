@@ -97,7 +97,59 @@
                   <?php 
                   } ?>
                   </div>
+                </div>
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Phone</label>
+                  <div class="col-sm-4">
+                  <?php
+                  if ( $action === "view" ) {
+                    echo $member['member_phone'];
+                  }
+                  else {?>
+                    <input type="text" name="member_phone" class="form-control" id="member_phone" placeholder="Password" value="<?php echo $member['member_phone'];?>">
+                  <?php 
+                  } ?>
+                  </div>
                 </div> 
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Type of Lambretta</label>
+                  <div class="col-sm-4">
+                  <?php
+                  if ( $action === "view" ) {
+                    echo $member['member_type_of_lambretta'];
+                  }
+                  else {?>
+                    <input type="text" name="member_type_of_lambretta" class="form-control" id="member_type_of_lambretta" placeholder="Password" value="<?php echo $member['member_type_of_lambretta'];?>">
+                  <?php 
+                  } ?>
+                  </div>
+                </div> 
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Plate No</label>
+                  <div class="col-sm-4">
+                  <?php
+                  if ( $action === "view" ) {
+                    echo $member['member_plate_no'];
+                  }
+                  else {?>
+                    <input type="text" name="member_plate_no" class="form-control" id="member_plate_no" placeholder="Password" value="<?php echo $member['member_plate_no'];?>">
+                  <?php 
+                  } ?>
+                  </div>
+                </div> 
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Married</label>
+                  <div class="col-sm-4">
+                  <?php
+                  if ( $action === "view" ) {
+                    echo $member['member_married'];
+                  }
+                  else {?>
+                    <input type="text" name="member_married" class="form-control" id="member_married" placeholder="Password" value="<?php echo $member['member_married'];?>">
+                  <?php 
+                  } ?>
+                  </div>
+                </div>  
                 <div class="form-group" form-group-sm>
                   <label for="inputPassword" class="col-sm-2 controllabel">Username</label>
                   <div class="col-sm-4">

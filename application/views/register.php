@@ -21,7 +21,7 @@
         <section class="content">
           <!-- Default box --> 
           <?php $this->load->view('data_messages');?>  
-          <form class="form-horizontal" role="form" action="<?php echo base_url('login/register');?>" method="POST">
+          <form class="form-horizontal" role="form" action="<?php echo base_url('login/register');?>" method="POST" enctype="multipart/form-data">
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Fill in Your Informations</h3>
@@ -58,6 +58,36 @@
                     <input type="text" name="member_address" class="form-control" id="member_address" placeholder="Password">
                   </div>
                 </div> 
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Phone</label>
+                  <div class="col-sm-4">
+                    <input type="text" name="member_phone" class="form-control" id="member_phone" placeholder="Phone">
+                  </div>
+                </div>
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Type of lambretta</label>
+                  <div class="col-sm-4">
+                    <input type="text" name="member_type_of_lambretta" class="form-control" id="member_type_of_lambretta">
+                  </div>
+                </div>
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Plate No</label>
+                  <div class="col-sm-4">
+                    <input type="text" name="member_plate_no" class="form-control" id="member_plate_no">
+                  </div>
+                </div>
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Married</label>
+                  <div class="col-sm-4">
+                    <input type="text" name="member_married" class="form-control" id="member_married">
+                  </div>
+                </div>
+                <div class="form-group" form-group-sm>
+                  <label for="inputPassword" class="col-sm-2 controllabel">Profile Pic</label>
+                  <div class="col-sm-4">
+                    <input type="file" name="member_pic" class="form-control" id="member_pic">
+                  </div>
+                </div>
                 <div class="form-group" form-group-sm>
                   <label for="inputPassword" class="col-sm-2 controllabel">Username</label>
                   <div class="col-sm-4">

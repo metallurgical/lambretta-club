@@ -68,13 +68,17 @@ class Member extends CI_Controller {
 					'member_id' => $member_id
 				);
 			$columnToUpdate = array(
-					'member_username'     => $formData['member_username'],
-					'member_password'     => $formData['member_password'],
-					'member_email'        => $formData['member_email'],
-					'member_ic'           => $formData['member_ic'],
-					'member_name'         => $formData['member_name'],
-					'member_gender'       => $formData['member_gender'],
-					'member_address'      => $formData['member_address']
+					'member_username'          => $formData['member_username'],
+					'member_password'          => $formData['member_password'],
+					'member_email'             => $formData['member_email'],
+					'member_ic'                => $formData['member_ic'],
+					'member_name'              => $formData['member_name'],
+					'member_gender'            => $formData['member_gender'],
+					'member_address'           => $formData['member_address'],
+					'member_phone'             => $formData['member_phone'],
+					'member_type_of_lambretta' => $formData['member_type_of_lambretta'],
+					'member_plate_no'          => $formData['member_plate_no'],
+					'member_married'           => $formData['member_married']
 				);
 	
 			$this->seat_model->update_data($columnToUpdate, $tableToUpdate, $usingCondition);

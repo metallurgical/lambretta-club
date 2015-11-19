@@ -16,6 +16,8 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins 
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url();?>assets/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="<?php echo base_url('assets/datatables/dataTables.bootstrap.css');?>" rel="stylesheet" type="text/css" />
 <!-- 
     <link rel="stylesheet" href="<?php echo base_url('assets/codebase/dhtmlxscheduler.css');?>" type="text/css">
 
@@ -23,10 +25,16 @@
  -->
   <script src="<?php echo base_url('dhtmlx/scheduler/dhtmlxscheduler.js');?>" type="text/javascript" charset="utf-8"></script>
   <script src="<?php echo base_url('dhtmlx/scheduler/dhtmlxscheduler_readonly.js');?>" type="text/javascript" charset="utf-8"></script>
+  
+
   <link rel="stylesheet" href="<?php echo base_url('dhtmlx/scheduler/dhtmlxscheduler_glossy.css');?>" type="text/css" media="screen" title="no title" charset="utf-8">
 
   <!-- jQuery 2.1.3 -->
     <script src="<?php echo base_url();?>assets/js/jQuery-2.1.3.min.js"></script>
+
+    <script src="<?php echo base_url('assets/datatables/jquery.dataTables.js');?>"></script>
+    <script src="<?php echo base_url('assets/datatables/dataTables.bootstrap.js');?>"></script>
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -56,14 +64,14 @@
         <ul class="nav navbar-nav">              
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- <img src="<?php echo base_url();?>assets/images/avatar04.PNG" class="user-image" alt="User Image"/> -->
+              <!-- <img src="<?php echo base_url();?>assets/uploads/profile/<?php echo $this->session->userdata('user_pic');?>" class="user-image" alt="User Image"/> -->
               <i class="fa fa-user"></i>
               Welcome
               <span class="hidden-xs"><?php echo $this->session->userdata('user_name');?></span>
             </a>
             <ul class="dropdown-menu">                  
               <li class="user-header">
-                <!-- <img src="<?php echo base_url();?>assets/images/avatar04.PNG" class="img-circle" alt="User Image" /> -->
+                <img src="<?php echo base_url();?>assets/uploads/profile/<?php echo $this->session->userdata('user_pic');?>" class="img-circle" alt="User Image" />
                 <p>
                   <?php echo $this->session->userdata('user_name');?>
                   <small>Member since <?php echo $this->session->userdata('user_created');?></small>

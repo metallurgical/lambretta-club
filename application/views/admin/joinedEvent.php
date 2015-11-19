@@ -81,3 +81,8 @@
 <!-- Footer.php -->      
 <?php $this->load->view('footer');?>
 <!-- =============================================== -->
+<script>
+  $(function () {
+    $("#example1").dataTable();
+  })
+</script>

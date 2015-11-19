@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
                 $state = $crud->getState();
                 $data['page_header_title'] = ucfirst($this->uri->segment(2)) . " Management";
                 $crud->set_table('members');
+                $crud->set_field_upload('member_profile_picture','assets/uploads/profile');
                 $output = $crud->render();
                 $output->data = $data;
                 $this->load->view('CRUD', $output);

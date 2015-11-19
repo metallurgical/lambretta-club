@@ -6,7 +6,7 @@
     if ( $this->session->userdata('user_category') === "member" ) { ?>
     <div class="user-panel">
       <div class="pull-left image">
-        <!-- <img src="<?php echo base_url();?>assets/images/avatar04.PNG" class="img-circle" alt="User Image" /> -->
+        <img src="<?php echo base_url();?>assets/uploads/profile/<?php echo $this->session->userdata('user_pic');?>" class="img-circle" alt="User Image" />
       </div>
       <div class="pull-left info">
         <p><?php echo $this->session->userdata('user_username');?></p>

@@ -56,14 +56,14 @@
         <ul class="nav navbar-nav">              
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- <img src="<?php echo base_url();?>assets/images/avatar04.PNG" class="user-image" alt="User Image"/> -->
+              <!-- <img src="<?php echo base_url();?>assets/uploads/profile/<?php echo $this->session->userdata('user_pic');?>" class="user-image" alt="User Image"/> -->
               <i class="fa fa-user"></i>
               Welcome
               <span class="hidden-xs"><?php echo $this->session->userdata('user_name');?></span>
             </a>
             <ul class="dropdown-menu">                  
               <li class="user-header">
-                <!-- <img src="<?php echo base_url();?>assets/images/avatar04.PNG" class="img-circle" alt="User Image" /> -->
+                <img src="<?php echo base_url();?>assets/uploads/profile/<?php echo $this->session->userdata('user_pic');?>" class="img-circle" alt="User Image" />
                 <p>
                   <?php echo $this->session->userdata('user_name');?>
                   <small>Member since <?php echo $this->session->userdata('user_created');?></small>
